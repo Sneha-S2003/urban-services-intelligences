@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Short-Trip Saturation | Everyday Urban Services Intelligence</title>
+
+  <!-- Mapbox CSS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+
+  <!-- Shared Site Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Mapbox JS -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="demand.html">Demand</a>
+  <a href="short-trips.html">Short Trips</a>
+  <a href="reliability.html">Reliability</a>
+</nav>
+
+<div class="content" style="padding-bottom: 0;">
+  <h1>Short-Trip Saturation</h1>
+  <p>
+    Stations where a high share of trips are under 2 km indicate strong potential for
+    short-distance mode substitution. These locations may be especially responsive
+    to bike-first infrastructure improvements.
+  </p>
+</div>
+
+<div id="map"></div>
+
+<!-- Page-Specific Map Logic -->
+<script src="js/short-trips.js"></script>
+
+</body>
+</html>
