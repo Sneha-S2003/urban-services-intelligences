@@ -11,7 +11,7 @@ map.on('load', () => {
 
   map.addSource('demand', {
     type: 'geojson',
-    data: 'data/station_demand_index.geojson'
+    data: 'station_demand_index.geojson'
   });
 
   map.addLayer({
