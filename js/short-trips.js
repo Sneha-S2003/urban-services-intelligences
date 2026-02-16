@@ -11,7 +11,7 @@ map.on('load', () => {
 
   map.addSource('shortTrips', {
     type: 'geojson',
-    data: 'data/short_trip_saturation.geojson'
+    data: 'short_trip_saturation.geojson'
   });
 
   map.addLayer({
