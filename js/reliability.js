@@ -11,7 +11,7 @@ map.on('load', () => {
 
   map.addSource('reliability', {
     type: 'geojson',
-    data: 'data/everyday_service_index.geojson'
+    data: 'everyday_service_index.geojson'
   });
 
   map.addLayer({
