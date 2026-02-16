@@ -11,7 +11,7 @@ map.on('load', () => {
 
   map.addSource('demand', {
     type: 'geojson',
-    data: 'station_demand_index.geojson'
+    data: 'station_stress_mismatch.geojson'
   });
 
   map.addLayer({
