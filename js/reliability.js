@@ -36,5 +36,35 @@ map.on('load', () => {
       'circle-opacity': 0.85
     }
   });
+const popup = new mapboxgl.Popup({
+    closeButton: false,
+    closeOnClick: false
+  });
+
+  map.on('mouseenter', 'reliability-layer', (e) => {
+
+    map.getCanvas().style.cursor = 'pointer';
+
+    const props = e.features[0].properties;
+
+    popup
+      .setLngLat(e.lngLat)
+      .setHTML(`
+        <div style="font-size: 13px; line-height: 1.4;">
+          <strong>${props.start_station_name}</strong><br/><br/>
+          Everyday Service Index: ${props.service_index.toFixed(2)}<br/>
+          Avg Daily Trips: ${Math.round(props.avg_daily_trips)}<br/>
+          Stability Score: ${props.stability_score ? props.stability_score.toFixed(2) : 'N/A'}<br/>
+          Peak Consistency: ${(props.peak_consistency * 100).toFixed(1)}%<br/>
+          Member Consistency: ${(props.member_consistency * 100).toFixed(1)}%
+        </div>
+      `)
+      .addTo(map);
+  });
+
+  map.on('mouseleave', 'reliability-layer', () => {
+    map.getCanvas().style.cursor = '';
+    popup.remove();
+  });
 
 });
