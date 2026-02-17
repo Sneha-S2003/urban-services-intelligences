@@ -39,20 +39,35 @@ map.on('load', () => {
   });
 
   // Hover popup
-  map.on('mouseenter', 'shortTrips-layer', (e) => {
-    const props = e.features[0].properties;
+ map.on('mouseenter', 'shortTrips-layer', (e) => {
 
-    new mapboxgl.Popup()
-      .setLngLat(e.lngLat)
-      .setHTML(`
-        <strong>${props.start_station_name}</strong><br/>
+  const props = e.features[0].properties;
+
+  new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: false
+    })
+    .setLngLat(e.lngLat)
+    .setHTML(`
+      <div style="font-size: 13px; line-height: 1.4;">
+        <strong>${props.start_station_name}</strong><br/><br/>
+
         Short-Trip Share: ${(props.short_trip_share * 100).toFixed(1)}%<br/>
         Avg Daily Short Trips: ${Math.round(props.avg_daily_short_trips)}<br/>
         Avg Daily Trips: ${Math.round(props.avg_daily_trips)}<br/>
         Peak-Hour Share: ${(props.peak_share * 100).toFixed(1)}%<br/>
         Member Share: ${(props.member_share * 100).toFixed(1)}%
-      `)
-      .addTo(map);
-  });
+      </div>
+    `)
+    .addTo(map);
+});
+
+map.on('mouseleave', 'shortTrips-layer', () => {
+  map.getCanvas().style.cursor = '';
+});
+
+map.on('mouseenter', 'shortTrips-layer', () => {
+  map.getCanvas().style.cursor = 'pointer';
+});
 
 });
