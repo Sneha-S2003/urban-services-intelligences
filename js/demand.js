@@ -25,7 +25,7 @@ map.on('load', () => {
       'heatmap-weight': [
         'interpolate',
         ['linear'],
-        ['get', 'avg_daily_trips'],
+        ['get', 'station_stress_mismatch.geojson'],
         0, 0,
         60, 1
       ],
