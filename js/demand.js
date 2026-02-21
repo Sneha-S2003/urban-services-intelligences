@@ -11,7 +11,7 @@ map.on('load', () => {
 
   map.addSource('demand', {
     type: 'geojson',
-    data: 'data/station_stress_mismatch.geojson'  // confirm filename
+    data: 'station_stress_mismatch.geojson'  // confirm filename
   });
 
   // Heatmap Layer
