@@ -2,59 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Everyday Urban Services Intelligence</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
 
-<nav class="top-nav">
-  <div class="nav-container">
-    <h2 class="logo">Everyday Urban Services Intelligence</h2>
-    <div class="nav-links">
-      <a href="demand.html">Demand</a>
-      <a href="short-trips.html">Short Trips</a>
-      <a href="reliability.html">Reliability</a>
-    </div>
-  </div>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="demand.html">Demand</a>
+  <a href="short-trips.html">Short Trips</a>
+  <a href="reliability.html">Reliability</a>
 </nav>
 
-<section class="intro">
-  <div class="intro-text">
-    <h1>Understanding Bikeshare Infrastructure Through Data</h1>
+<section class="home-hero">
+  <div class="container">
+    <h1>Everyday Urban Services Intelligence</h1>
     <p>
-      A data-driven exploration of Capital Bikeshare usage patterns in Washington, DC — 
-      highlighting demand intensity, short-trip behavior, and reliability as everyday service.
+      A spatial framework for understanding Capital Bikeshare as public infrastructure.
+      This project highlights demand intensity, short-distance substitution patterns,
+      and service reliability across Washington, DC.
     </p>
   </div>
 </section>
 
-<section class="work-grid">
+<section class="home-grid">
+  <div class="container grid">
 
-  <a href="demand.html" class="work-card">
-    <h3>Station Demand Index</h3>
-    <p>Explore where bikeshare demand is most intense across DC.</p>
-    <span class="cta">View demand analysis →</span>
-  </a>
+    <a href="demand.html" class="box">
+      <h2>Station Demand Index</h2>
+      <p>
+        Heatmap visualization of sustained daily bike activity.
+        Identifies high-intensity corridors and station clusters.
+      </p>
+      <span>View Analysis →</span>
+    </a>
 
-  <a href="short-trips.html" class="work-card">
-    <h3>Short-Trip Saturation</h3>
-    <p>Identify stations with high share of short trips — ideal for bike-first infrastructure.</p>
-    <span class="cta">View short-trip patterns →</span>
-  </a>
+    <a href="short-trips.html" class="box">
+      <h2>Short-Trip Saturation</h2>
+      <p>
+        Stations where short-distance trips dominate,
+        indicating strong potential for bike-first investment.
+      </p>
+      <span>View Analysis →</span>
+    </a>
 
-  <a href="reliability.html" class="work-card">
-    <h3>Everyday Service Reliability</h3>
-    <p>See where bikeshare functions as dependable daily infrastructure.</p>
-    <span class="cta">View reliability index →</span>
-  </a>
+    <a href="reliability.html" class="box">
+      <h2>Everyday Service Reliability</h2>
+      <p>
+        Composite index measuring stability, repeat usage,
+        and peak-hour consistency.
+      </p>
+      <span>View Analysis →</span>
+    </a>
 
+  </div>
 </section>
 
-<section class="footer-section">
-  <p>
-    Built with publicly available Capital Bikeshare trip data and spatial analysis. 
-    Designed as an exploratory framework for transportation planning.
-  </p>
+<section class="home-footer">
+  <div class="container">
+    <p>
+      Built using publicly available Capital Bikeshare trip data.
+      Designed as an exploratory framework for transportation planning and infrastructure equity.
+    </p>
+  </div>
 </section>
 
 </body>
