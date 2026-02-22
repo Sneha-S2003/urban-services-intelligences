@@ -56,13 +56,13 @@ map.on('load', () => {
   });
 
   // Single popup instance
-  const popup = new mapboxgl.Popup({
+  // Single popup instance
+const popup = new mapboxgl.Popup({
   closeButton: false,
   closeOnClick: false
 });
 
 map.on('mouseenter', 'demand-hover', (e) => {
-
   map.getCanvas().style.cursor = 'pointer';
 
   const props = e.features[0].properties;
@@ -70,10 +70,9 @@ map.on('mouseenter', 'demand-hover', (e) => {
   popup
     .setLngLat(e.lngLat)
     .setHTML(`
-      <div style="font-size: 13px; line-height: 1.4;">
-        <strong>${props.start_station_name}</strong><br/><br/>
-        Avg Daily Trips: ${Math.round(props.avg_daily_trips)}<br/>
-        Total Trips (Period): ${Math.round(props.total_trips)}
+      <div style="font-size: 13px;">
+        <strong>${props.start_station_name}</strong><br/>
+        Avg Daily Trips: ${Math.round(props.avg_daily_trips)}
       </div>
     `)
     .addTo(map);
