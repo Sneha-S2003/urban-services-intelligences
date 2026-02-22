@@ -14,15 +14,71 @@ map.on('load', () => {
     data: 'station_stress_mismatch.geojson'
   });
 
+  // Heatmap Layer
   map.addLayer({
-    id: 'demand-layer',
-    type: 'circle',
+    id: 'demand-heat',
+    type: 'heatmap',
     source: 'demand',
     paint: {
-      'circle-radius': 6,
-      'circle-color': '#1d4ed8',
-      'circle-opacity': 0.8
+      'heatmap-weight': [
+        'interpolate',
+        ['linear'],
+        ['get', 'station_stress_mismatch.geojson'],
+        0, 0,
+        60, 1
+      ],
+      'heatmap-intensity': 1.5,
+      'heatmap-color': [
+        'interpolate',
+        ['linear'],
+        ['heatmap-density'],
+        0, 'rgba(0,0,0,0)',
+        0.3, '#bfdbfe',
+        0.5, '#60a5fa',
+        0.7, '#2563eb',
+        1, '#111827'
+      ],
+      'heatmap-radius': 30,
+      'heatmap-opacity': 0.9
     }
   });
 
+  // Invisible circle layer for hover
+  map.addLayer({
+    id: 'demand-hover',
+    type: 'circle',
+    source: 'demand',
+    paint: {
+      'circle-radius': 8,
+      'circle-color': '#000000',
+      'circle-opacity': 0  // invisible
+    }
+  });
 
+  // Single popup instance
+  // Single popup instance
+const popup = new mapboxgl.Popup({
+  closeButton: false,
+  closeOnClick: false
+});
+
+map.on('mouseenter', 'demand-hover', (e) => {
+  map.getCanvas().style.cursor = 'pointer';
+
+  const props = e.features[0].properties;
+
+  popup
+    .setLngLat(e.lngLat)
+    .setHTML(`
+      <div style="font-size: 13px;">
+        <strong>${props.start_station_name}</strong><br/>
+        Avg Daily Trips: ${Math.round(props.avg_daily_trips)}
+      </div>
+    `)
+    .addTo(map);
+});
+
+map.on('mouseleave', 'demand-hover', () => {
+  map.getCanvas().style.cursor = '';
+  popup.remove();
+});
