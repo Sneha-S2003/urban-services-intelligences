@@ -11,10 +11,9 @@ map.on('load', () => {
 
   map.addSource('demand', {
     type: 'geojson',
-    data: 'station_stress_mismatch.geojson'
+    data: 'station_stress_mismatch.geojson'   // FIXED PATH
   });
 
-  // Heatmap Layer
   map.addLayer({
     id: 'demand-heat',
     type: 'heatmap',
@@ -23,7 +22,7 @@ map.on('load', () => {
       'heatmap-weight': [
         'interpolate',
         ['linear'],
-        ['get', 'station_stress_mismatch.geojson'],
+        ['get', 'avg_daily_trips'],   // FIXED PROPERTY
         0, 0,
         60, 1
       ],
@@ -43,42 +42,41 @@ map.on('load', () => {
     }
   });
 
-  // Invisible circle layer for hover
+  // Invisible hover layer
   map.addLayer({
     id: 'demand-hover',
     type: 'circle',
     source: 'demand',
     paint: {
       'circle-radius': 8,
-      'circle-color': '#000000',
-      'circle-opacity': 0  // invisible
+      'circle-opacity': 0
     }
   });
 
-  // Single popup instance
-  // Single popup instance
-const popup = new mapboxgl.Popup({
-  closeButton: false,
-  closeOnClick: false
-});
+  const popup = new mapboxgl.Popup({
+    closeButton: false,
+    closeOnClick: false
+  });
 
-map.on('mouseenter', 'demand-hover', (e) => {
-  map.getCanvas().style.cursor = 'pointer';
+  map.on('mouseenter', 'demand-hover', (e) => {
+    map.getCanvas().style.cursor = 'pointer';
 
-  const props = e.features[0].properties;
+    const props = e.features[0].properties;
 
-  popup
-    .setLngLat(e.lngLat)
-    .setHTML(`
-      <div style="font-size: 13px;">
-        <strong>${props.start_station_name}</strong><br/>
-        Avg Daily Trips: ${Math.round(props.avg_daily_trips)}
-      </div>
-    `)
-    .addTo(map);
-});
+    popup
+      .setLngLat(e.lngLat)
+      .setHTML(`
+        <div style="font-size: 13px;">
+          <strong>${props.start_station_name}</strong><br/>
+          Avg Daily Trips: ${Math.round(props.avg_daily_trips)}
+        </div>
+      `)
+      .addTo(map);
+  });
 
-map.on('mouseleave', 'demand-hover', () => {
-  map.getCanvas().style.cursor = '';
-  popup.remove();
+  map.on('mouseleave', 'demand-hover', () => {
+    map.getCanvas().style.cursor = '';
+    popup.remove();
+  });
+
 });
