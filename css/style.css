@@ -1,34 +1,60 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #f9fafb;
-  color: #111827;
+.hero {
+  padding: 100px 20px 60px 20px;
+  text-align: center;
+  background: linear-gradient(to bottom, #ffffff, #f3f4f6);
 }
 
-nav {
-  background: white;
-  padding: 12px 24px;
-  border-bottom: 1px solid #e5e7eb;
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
 }
 
-nav a {
-  margin-right: 20px;
-  text-decoration: none;
+.hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.6;
   color: #374151;
-  font-weight: 500;
 }
 
-nav a:hover {
-  color: #111827;
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 60px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-#map {
-  width: 100vw;
-  height: calc(100vh - 60px);
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.content {
-  max-width: 800px;
-  margin: 60px auto;
-  padding: 0 20px;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  margin-bottom: 12px;
+}
+
+.card span {
+  display: inline-block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.footer-note {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6b7280;
+  font-size: 14px;
 }
