@@ -82,4 +82,4 @@ map.on('mouseleave', 'demand-hover', () => {
   map.getCanvas().style.cursor = '';
   popup.remove();
 });
-});
+
