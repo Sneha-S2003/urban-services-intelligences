@@ -57,31 +57,30 @@ map.on('load', () => {
 
   // Single popup instance
   const popup = new mapboxgl.Popup({
-    closeButton: false,
-    closeOnClick: false
-  });
+  closeButton: false,
+  closeOnClick: false
+});
 
-  map.on('mouseenter', 'demand-hover', (e) => {
-    map.getCanvas().style.cursor = 'pointer';
+map.on('mouseenter', 'demand-hover', (e) => {
 
-    const props = e.features[0].properties;
+  map.getCanvas().style.cursor = 'pointer';
 
-    popup
-      .setLngLat(e.lngLat)
-      .setHTML(`
-        <div style="font-size: 13px; line-height: 1.4;">
-          <strong>${props.start_station_name}</strong><br/><br/>
-          Avg Daily Trips: ${Math.round(props.avg_daily_trips)}<br/>
-          Peak-Hour Share: ${(props.peak_share * 100).toFixed(1)}%<br/>
-          Member Share: ${(props.member_share * 100).toFixed(1)}%
-        </div>
-      `)
-      .addTo(map);
-  });
+  const props = e.features[0].properties;
 
-  map.on('mouseleave', 'demand-hover', () => {
-    map.getCanvas().style.cursor = '';
-    popup.remove();
-  });
+  popup
+    .setLngLat(e.lngLat)
+    .setHTML(`
+      <div style="font-size: 13px; line-height: 1.4;">
+        <strong>${props.start_station_name}</strong><br/><br/>
+        Avg Daily Trips: ${Math.round(props.avg_daily_trips)}<br/>
+        Total Trips (Period): ${Math.round(props.total_trips)}
+      </div>
+    `)
+    .addTo(map);
+});
 
+map.on('mouseleave', 'demand-hover', () => {
+  map.getCanvas().style.cursor = '';
+  popup.remove();
+});
 });
