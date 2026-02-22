@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Demand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Short-Trip Saturation | Everyday Urban Services Intelligence</title>
 
+  <!-- Mapbox CSS -->
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 
+  <!-- Shared Site Styles -->
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Mapbox JS -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 </head>
+
 <body>
 
 <nav>
@@ -18,9 +24,28 @@
   <a href="reliability.html">Reliability</a>
 </nav>
 
+<div class="content" style="padding-bottom: 0;">
+  <h1>Short-Trip Saturation</h1>
+  <p>
+    Stations where a high share of trips are under 2 km indicate strong potential for
+    short-distance mode substitution. These locations may be especially responsive
+    to bike-first infrastructure improvements.
+  </p>
+</div>
+<div class="content">
+  <h2>Observed Pattern</h2>
+  <p>
+    Stations with both high short-trip share and high short-trip volume tend to
+    cluster in dense, mixed-use areas of central DC, particularly near transit
+    nodes and commercial corridors. These locations suggest strong potential for
+    bike-first infrastructure where short discretionary trips are common.
+  </p>
+</div>
+
 <div id="map"></div>
 
-<script src="js/demand.js"></script>
+<!-- Page-Specific Map Logic -->
+<script src="js/short-trips.js"></script>
 
 </body>
 </html>
