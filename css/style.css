@@ -117,22 +117,13 @@ body {
   color: #2563eb;
   font-size: 14px;
 }
-
+#map {
+  width: 100%;
+  height: 90
 /* =========================
    Map Pages (CRITICAL)
    ========================= */
 
-#map {
-  position: absolute;
-  top: 60px;   /* height of nav */
-  bottom: 0;
-  width: 100%;
-}
-
-/* Ensure body takes full height */
-html, body {
-  height: 100%;
-}
 
 /* =========================
    Footer
